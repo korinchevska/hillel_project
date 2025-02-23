@@ -141,18 +141,5 @@ public class Homework8 {
         return count;
     }
     }
-    /*public static String countEvenIntus(String str) {
-        if(str.length() >= 3){
-            String word = str.substring(0, 3);
-            return word + word + word;
-        }
-        return str + str + str;
-    }
-    public static String notString(String str) {
-        if (str.startsWith("not"))
-            return str;
-        else
-            return "not " + str;
-    }*/
 
 
