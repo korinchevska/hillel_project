@@ -31,7 +31,5 @@ public class Main {
         change.displayPersonInfo(person3); //old
         System.out.println("new");
         man.displayInfo();  //new
-
-
     }
 }

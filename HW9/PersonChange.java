@@ -8,4 +8,5 @@ public class PersonChange {
         person.setProfession(newProfession);
         System.out.println(person.getName() + " changed her/his profession to: " + newProfession);
     }
+
 }

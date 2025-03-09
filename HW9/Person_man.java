@@ -7,5 +7,4 @@ public class Person_man extends Person{
     public void displayInfo() {
         System.out.println("Gender: " + GENDER + ", Name: " + name + ", Age: " + getAge() + ", Profession: " + profession);
     }
-
 }
