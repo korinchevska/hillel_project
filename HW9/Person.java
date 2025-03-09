@@ -1,7 +1,7 @@
 //import java.util.Date;
 import java.time.Year;
 
-public class Person implements Displayable{
+abstract class Person implements Displayable{
     String name;
     //Date dob;
     Profession profession;
@@ -36,8 +36,14 @@ public class Person implements Displayable{
     public int getBirthYear() {
         return year;
     }
-    public void displayInfo (){
-        System.out.println("Name: " + name + ", Age: " + getAge() + ", Profession: " + profession);
+    public abstract void displayInfo();
 
-    }
+   /* public void displayInfo(boolean showBirthYear) {
+        if (showBirthYear) {
+            System.out.println("Ім'я: " + name + ", Рік народження: " + getAge() + ", Професія: " + profession);
+        } else {
+            displayInfo(); // Викликаємо стандартний варіант
+        }*/
+    //System.out.println("Name: " + name + ", Age: " + getAge() + ", Profession: " + profession);
+
     }
