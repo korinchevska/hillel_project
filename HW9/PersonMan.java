@@ -1,7 +1,7 @@
-public class Person_man extends Person{
+public class PersonMan extends Person{
     public static final String GENDER = "Man";
 
-    public Person_man(String name, Profession profession, int year) {
+    public PersonMan(String name, Profession profession, int year) {
         super(name, profession, year);
     }
     public void displayInfo() {

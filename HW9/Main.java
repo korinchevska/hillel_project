@@ -5,9 +5,9 @@ public class Main {
         Person person2 = new Person("Agata", Profession.DANTIST, 1985);
         Person person3 = new Person("Alex", Profession.BARISTA, 2005);
         //new
-        Displayable man = new Person_man ("Alex", Profession.BARISTA, 2005);
-        Displayable woman = new Person_woman ("Julia", Profession.ACCOUNTANT, 1994);
-        Displayable woman1 = new Person_woman ("Agata", Profession.DANTIST, 1985);
+        Displayable man = new PersonMan("Alex", Profession.BARISTA, 2005);
+        Displayable woman = new PersonWoman("Julia", Profession.ACCOUNTANT, 1994);
+        Displayable woman1 = new PersonWoman("Agata", Profession.DANTIST, 1985);
 
 
         PersonChange change = new PersonChange();

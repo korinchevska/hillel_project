@@ -39,6 +39,5 @@ public class Person implements Displayable{
     public void displayInfo (){
         System.out.println("Name: " + name + ", Age: " + getAge() + ", Profession: " + profession);
 
-
     }
     }
