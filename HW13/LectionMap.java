@@ -26,9 +26,9 @@ public class LectionMap {
         setsB.add(6);
         System.out.println(checkIntersectionSets(setsA, setsB));
 
-        //доробити
         System.out.println("ДЗ 13.6. Повернути елемент, який зустрічається найчастіше");
-        System.out.println(elementMostFrequently(new String[]{"a", "b", "a"}));
+        List<Integer> list1 = Arrays.asList(3, 1, 2, 2, 1, 2, 3, 3, 3, 2, 2);
+        System.out.println(elementMostFrequently(list1));
 
         //доробити
         System.out.println("ДЗ 13.5. Парні рядки");
@@ -73,10 +73,21 @@ public class LectionMap {
         return false;
     }
     //ДЗ 13.6. Повернути елемент, який зустрічається найчастіше
-    public static Map<String, String> elementMostFrequently(String[] words) {
-        Map<String, String> pairRowsSymbols = new HashMap<>();
+    public static int elementMostFrequently(List<Integer> numbers) {
+        Map<Integer, Integer> forFrequencyMap = new HashMap<>();
+        int maxCountFrequency = 0;
+        int mostFrequentlyElement = 0;
+        for (int num : numbers) {
+            forFrequencyMap.put(num, forFrequencyMap.getOrDefault(num, 0) + 1);
+        }
+        for (Map.Entry<Integer, Integer> entry : forFrequencyMap.entrySet()) {
+            if (entry.getValue() > maxCountFrequency) {
+                maxCountFrequency = entry.getValue();
+                mostFrequentlyElement = entry.getKey();
+            }
+        }
 
-        return pairRowsSymbols;
+        return mostFrequentlyElement;
     }
     //ДЗ 13.5. Парні рядки
     public static Map<String, String> buildResultString(String[] words) {
