@@ -30,13 +30,11 @@ public class LectionMap {
         List<Integer> list1 = Arrays.asList(3, 1, 2, 2, 1, 2, 3, 3, 3, 2, 2);
         System.out.println(elementMostFrequently(list1));
 
-        //доробити
         System.out.println("ДЗ 13.5. Парні рядки");
         System.out.println(buildResultString(new String[]{"a", "b", "a"}));
         System.out.println(buildResultString(new String[]{"a", "b", "a", "c", "a", "d", "a"}));
-        System.out.println(buildResultString(new String[]{"a", "", "a"}));
+        System.out.println(buildResultString(new String[]{"b", "", "b"}));
 
-        //доробити
         System.out.println("ДЗ 13.4. Акцентуємося на роботу зі значеннями");
         System.out.println(mergeStringsByFirstChar(new String[]{"salt", "tea", "soda", "toast"}));
         System.out.println(mergeStringsByFirstChar(new String[]{"aa", "bb", "cc", "aAA", "cCC", "d"}));
@@ -90,15 +88,26 @@ public class LectionMap {
         return mostFrequentlyElement;
     }
     //ДЗ 13.5. Парні рядки
-    public static Map<String, String> buildResultString(String[] words) {
-        Map<String, String> pairRowsSymbols = new HashMap<>();
-
-        return pairRowsSymbols;
+    public static String buildResultString(String[] words) {
+        Map<String, Integer> pairRowsSymbols = new LinkedHashMap<>();
+        for (String word : words) {
+            pairRowsSymbols.put(word, pairRowsSymbols.getOrDefault(word, 0) + 1);
+            if (pairRowsSymbols.get(word) == 2) {
+                return word;
+            }
+        }
+        return "";
     }
     //ДЗ 13.4. Акцентуємося на роботу зі значеннями
     public static Map<String, String> mergeStringsByFirstChar(String[] words) {
         Map<String, String> differentSymbols = new HashMap<>();
 
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                String firstChar = String.valueOf(word.charAt(0));
+                differentSymbols.put(firstChar, differentSymbols.getOrDefault(firstChar, "") + word);
+            }
+        }
         return differentSymbols;
     }
     //ДЗ 13.3. Підрахунок слів
