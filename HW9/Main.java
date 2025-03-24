@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        try {
         //old
         Person person1 = new Person("Julia", Profession.ACCOUNTANT, 1994);
         Person person2 = new Person("Agata", Profession.DANTIST, 1985);
@@ -8,6 +9,11 @@ public class Main {
         Displayable man = new Person_man ("Alex", Profession.BARISTA, 2005);
         Displayable woman = new Person_woman ("Julia", Profession.ACCOUNTANT, 1994);
         Displayable woman1 = new Person_woman ("Agata", Profession.DANTIST, 1985);
+        //incorrect user
+             Displayable man2 = new Person_woman ("", Profession.DANTIST, 1899);
+        Displayable woman2 = new Person_woman ("ErrorWoman", Profession.DANTIST, 2026);
+        Displayable man1 = new Person_woman ("ErrorMan", Profession.DANTIST, 1899);
+
 
 
         PersonChange change = new PersonChange();
@@ -21,6 +27,9 @@ public class Main {
         man.displayInfo();
         woman.displayInfo();
         woman1.displayInfo();
+        man1.displayInfo();
+        man2.displayInfo();
+        woman2.displayInfo();
 
         change.changeProfession(person3,Profession.QA); //old
         ((Person) man).setProfession(Profession.QA); //new
@@ -31,5 +40,8 @@ public class Main {
         change.displayPersonInfo(person3); //old
         System.out.println("new");
         man.displayInfo();  //new
+    } catch (ExceptionHandle e) {
+        System.out.println("Error when creating user: " + e.getMessage());
+    }
     }
 }

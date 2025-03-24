@@ -1,7 +1,7 @@
 public class Person_man extends Person{
     public static final String GENDER = "Man";
 
-    public Person_man(String name, Profession profession, int year) {
+    public Person_man(String name, Profession profession, int year) throws ExceptionHandle {
         super(name, profession, year);
     }
     public void displayInfo() {
