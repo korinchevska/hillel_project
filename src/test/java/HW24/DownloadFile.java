@@ -30,12 +30,11 @@ public class DownloadFile {
         garagePage = new GaragePage(driver);
     }
     @Test
-    public void testFileDownload() throws InterruptedException {
+    public void testFileDownload()  {
         loginPage.clickGuestLogin();
         Assert.assertEquals("Incorrect URL after login", "https://guest:welcome2qauto@qauto.forstudy.space/panel/garage", driver.getCurrentUrl());
         garagePage.goToInstructions();
         garagePage.downloadFile();
-        Thread.sleep(5000);
         File downloadedFile = new File("C:\\Users\\okorynchevska\\Downloads");
         Assert.assertTrue("File not downloaded", downloadedFile.exists());
     }
