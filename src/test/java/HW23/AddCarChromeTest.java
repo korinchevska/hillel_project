@@ -35,6 +35,7 @@ public class AddCarChromeTest {
 
     @Test(description = "Checking the addition of a car through a guest login in Chrome")
     @Severity(SeverityLevel.NORMAL)
+    @Owner("korinchevska")
     @Description("Adding an Audi TT car for a guest with checking the name, mileage, date, and image")
     @Link(name = "QAuto task", url = "https://qauto.forstudy.space")
 
