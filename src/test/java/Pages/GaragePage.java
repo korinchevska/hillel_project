@@ -3,7 +3,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.testng.asserts.SoftAssert;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -101,5 +101,12 @@ public class GaragePage {
         }
 
         writer.close();
+    }
+    public void verifyAddedCarData(SoftAssert softAssert) {
+        softAssert.assertEquals(getCarTitle(), "Audi TT", "The name of the car is wrong");
+        softAssert.assertTrue(getMileageDate().contains(getTodayDateFormatted()), "Mileage date is not current");
+        softAssert.assertEquals(getMileageValue(), "20", "Mileage is incorrect");
+        softAssert.assertTrue(isCarImageVisible(), "Car image is not visible");
+        softAssert.assertTrue(getImageSrc().endsWith("audi.png"), "Image not audi.png");
     }
 }

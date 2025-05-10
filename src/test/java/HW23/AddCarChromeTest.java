@@ -1,17 +1,23 @@
 package HW23;
 
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import Pages.LoginPage;
 import Pages.GaragePage;
+import io.qameta.allure.*;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Severity;
 
-import java.time.Duration;
-
+@Epic("Garage")
+@Feature("Add Car")
+@Story("Guest adds Audi TT")
 public class AddCarChromeTest {
+
     public static WebDriver createChromeDriver() {
         return new ChromeDriver();}
     WebDriver driver;
@@ -26,23 +32,26 @@ public class AddCarChromeTest {
         loginPage = new LoginPage(driver);
         garagePage = new GaragePage(driver);
     }
-    @Test(description = "Checking the addition of a car through a guest login in Chrome")
-    public void testAddCar() {
-        loginPage.clickGuestLogin();
 
-        Assert.assertEquals(driver.getCurrentUrl(),
-                "https://guest:welcome2qauto@qauto.forstudy.space/panel/garage",
-                "Incorrect URL after login");
+    @Test(description = "Checking the addition of a car through a guest login in Chrome")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Adding an Audi TT car for a guest with checking the name, mileage, date, and image")
+    @Link(name = "QAuto task", url = "https://qauto.forstudy.space")
+
+    public void testAddCar() {
+        SoftAssert softAssert = new SoftAssert();
+
+        loginPage.clickGuestLogin();
+        softAssert.assertEquals(driver.getCurrentUrl(),
+                "https://guest:welcome2qauto@qauto.forstudy.space/panel/garage", "Incorrect URL after login");
 
         garagePage.clickAddCar();
         garagePage.fillCarData("Audi", "TT", 20);
         garagePage.clickAddButton();
 
-        Assert.assertEquals(garagePage.getCarTitle(), "Audi TT", "The car is not displayed");
-        Assert.assertTrue(garagePage.getMileageDate().contains(garagePage.getTodayDateFormatted()), "The mileage date does not match the current one");
-        Assert.assertEquals(garagePage.getMileageValue(), "20", "The mileage value is not 20");
-        Assert.assertTrue(garagePage.isCarImageVisible(), "Car image is not displayed");
-        Assert.assertTrue(garagePage.getImageSrc().endsWith("audi.png"), "Image has no ending in audi.png");
+        garagePage.verifyAddedCarData(softAssert);
+        softAssert.assertAll();
+
     }
 
     @AfterMethod
