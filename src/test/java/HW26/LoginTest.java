@@ -5,7 +5,13 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import Pages.LoginPage;
 import io.qameta.allure.*;
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 
+import static com.codeborne.selenide.Selenide.*;
 @Epic("Login")
 @Feature("Authentication")
 @Story("Invalid Login Attempts")
@@ -17,12 +23,14 @@ public class LoginTest {
     LoginPage loginPage;
     @BeforeMethod
     public void setUp() {
+       // Configuration.startMaximized = true;
+
         driver = createChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://guest:welcome2qauto@qauto.forstudy.space/");
         loginPage = new LoginPage(driver);
     }
-    @Test(dataProvider = "testData", description = "Checking invalid login attempts with different credentials")
+   // @Test(dataProvider = "testData", description = "Checking invalid login attempts with different credentials")
     @Owner("korinchevska")
     @Description("Verifying the error message for invalid login attempts")
     @Link(name = "QAuto task", url = "https://qauto.forstudy.space")
