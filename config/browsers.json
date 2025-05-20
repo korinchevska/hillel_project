@@ -1,0 +1,23 @@
+{
+  "chrome": {
+    "default": "chrome",
+    "versions": {
+      "128.0": {
+        "image": "selenoid/chrome:128.0",
+        "port": "4446",
+        "path": "/",
+        "privileged": true
+      }
+    }
+  },
+  "firefox": {
+    "default": "firefox",
+    "version": {
+      "125.0": {
+        "image": "selenoid/firefox:125.0",
+        "port": "4445",
+        "path": "/wd/hub"
+      }
+    }
+  }}
+

@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  selenium-hub:
+    image: selenium/hub:4.0.0-alpha-7
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+    environment:
+      - SE_NODE_MAX_SESSION=5
+      - SE_NODE_MAX_SESSION_PER_TYPE=5
+    networks:
+      - selenium-network
+
+  selenium-node-chrome:
+    image: selenium/node-chrome:4.0.0-alpha-7
+    container_name: selenium-node-chrome
+    environment:
+      - SE_EVENT_BUS_ADDRESS=selenium-hub:4442
+      - SE_NODE_PORT=5555
+      - SE_NODE_MAX_SESSION=1
+      - SE_NODE_CHROME=true
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - selenium-network
+    depends_on:
+      - selenium-hub
+
+  selenium-node-firefox:
+    image: selenium/node-firefox:4.0.0-alpha-7
+    container_name: selenium-node-firefox
+    environment:
+      - SE_EVENT_BUS_ADDRESS=selenium-hub:4442
+      - SE_NODE_PORT=5556
+      - SE_NODE_MAX_SESSION=1
+      - SE_NODE_FIREFOX=true
+    volumes:
+      - /dev/shm:/dev/shm
+    networks:
+      - selenium-network
+    depends_on:
+      - selenium-hub
+
+networks:
+  selenium-network:
+    driver: bridge
