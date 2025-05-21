@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Test Suite">
-    <test name="Login Test">
-        <parameter name="browser" value="firefox"/>
-        <classes>
-            <class name="HW28.LoginTest"/>
-        </classes>
-    </test>
+<test name="GarageTests">
+    <classes>
+        <class name="HW23.AddCarChromeTest"/>
+    </classes>
+</test>
 </suite>
