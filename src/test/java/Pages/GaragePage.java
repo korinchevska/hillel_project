@@ -34,9 +34,22 @@ public class GaragePage {
         driver.findElement(addCarButton).click();
     }
     public void fillCarData(String brand, String model, int mileage) {
-        new Select(driver.findElement(brandDropdown)).selectByVisibleText(brand);
-        new Select(driver.findElement(modelDropdown)).selectByVisibleText(model);
-        driver.findElement(mileageInput).sendKeys(String.valueOf(mileage));
+        WebElement brandElement = driver.findElement(brandDropdown);
+        WebElement modelElement = driver.findElement(modelDropdown);
+
+        if (brandElement.isEnabled()) {
+            new Select(brandElement).selectByVisibleText(brand);
+        } else {
+            System.out.println("Brand dropdown is disabled.");
+        }
+
+        if (modelElement.isEnabled()) {
+            new Select(modelElement).selectByVisibleText(model);
+        } else {
+            System.out.println("Model dropdown is disabled.");
+        }
+        WebElement mileageElement = driver.findElement(mileageInput);
+        mileageElement.sendKeys(String.valueOf(mileage));
     }
     public void clickAddButton() {
         driver.findElement(addButton).click();

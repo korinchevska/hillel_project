@@ -1,18 +1,22 @@
-package HW23;
+package HW29;
 
-import org.junit.jupiter.api.*;
+
+import Pages.GaragePage;
+import Pages.LoginPage;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import Pages.LoginPage;
-import Pages.GaragePage;
-import io.qameta.allure.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+//import io.qameta.allure.SeverityLevel;
 
 
 @Epic("Garage")
 @Feature("Add Car")
 @Story("Guest adds Audi TT")
-public class AddCarChromeTest {
+public class AddCarChromeTestJenkins {
 
     public static WebDriver createChromeDriver() {
         return new ChromeDriver();}
@@ -20,7 +24,7 @@ public class AddCarChromeTest {
     LoginPage loginPage;
     GaragePage garagePage;
 
-    @BeforeEach
+    @BeforeMethod
     public void setUp() {
         driver = createChromeDriver();
         driver.manage().window().maximize();
@@ -28,7 +32,9 @@ public class AddCarChromeTest {
         loginPage = new LoginPage(driver);
         garagePage = new GaragePage(driver);
     }
-    @Test
+
+    @Test(description = "Checking the addition of a car through a guest login in Chrome")
+    //@Severity(SeverityLevel.NORMAL)
     @Owner("korinchevska")
     @Description("Adding an Audi TT car for a guest with checking the name, mileage, date, and image")
     @Link(name = "QAuto task", url = "https://qauto.forstudy.space")
@@ -49,7 +55,7 @@ public class AddCarChromeTest {
 
     }
 
-    @AfterEach
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
