@@ -3,6 +3,8 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
+import Pages.TestConfig;
+
 public class LogoutTest {
 
     @BeforeClass
